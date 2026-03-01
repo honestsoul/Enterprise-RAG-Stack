@@ -1,0 +1,25 @@
+version: 1
+formatters:
+  standard:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: standard
+    stream: ext://sys.stdout
+loggers:
+  generative_ai_project:
+    level: INFO
+    handlers: [console]
+    propagate: no
+root:
+  level: WARNING
+  handlers: [console]
+
+# This YAML file configures the Python logging system.  The `standard`
+# formatter ensures timestamps and module names are included in all log
+# messages.  The `generative_ai_project` logger is configured to emit at
+# INFO level by default and does not propagate to avoid duplicate logs.  To
+# adjust logging behaviour on a per‑environment basis, override values via
+# environment variables or provide an alternative logging configuration file.
