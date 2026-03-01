@@ -1,0 +1,25 @@
+version: '3.8'
+
+# docker-compose configuration for the generative AI project.  This file
+# defines two services: the application itself and an optional vector
+# database.  When run via `docker compose up`, the app container is
+# built from the local Dockerfile and exposes port 8000 for an HTTP API
+# (if implemented).  The vector database service uses the Chroma Docker
+# image for persistent vector storage.
+
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    ports:
+      - "8000:8000"
+    command: ["python", "-m", "generative_ai_project"]
+  vectordb:
+    image: ankane/chroma:latest
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
