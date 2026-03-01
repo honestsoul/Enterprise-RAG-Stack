@@ -1,0 +1,28 @@
+[project]
+name = "generative_ai_project"
+version = "0.1.0"
+description = "Enterprise‑grade retrieval‑augmented generation (RAG) pipeline with flexible LLM backends."
+authors = [ { name = "Your Name", email = "you@example.com" } ]
+readme = "docs/README.md"
+requires-python = ">=3.9"
+
+# Runtime dependencies for the application.  See requirements.txt for a
+# plain‑text representation suitable for tools that do not parse TOML.
+dependencies = [
+    "openai>=1.0.0",
+    "anthropic>=0.9.0",
+    "faiss-cpu>=1.7.4",
+    "numpy>=1.24.0",
+    "jinja2>=3.1.2",
+    "transformers>=4.38.0",
+    "PyYAML>=6.0",
+    "loguru>=0.7.0",
+    "tqdm>=4.66.0",
+]
+
+[build-system]
+requires = ["setuptools>=67", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
