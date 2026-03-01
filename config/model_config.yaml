@@ -1,0 +1,33 @@
+# This configuration file defines the settings for supported Large Language
+# Model (LLM) providers used throughout the RAG pipeline.  Each provider
+# entry specifies the model to use, sensible defaults for temperature and
+# maximum token limits, and where to find credentials or model files.  By
+# externalising these values, the codebase can swap providers or adjust
+# parameters without changing application logic.  Environment variables such
+# as `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` can override the values here.
+
+llm_provider: openai
+providers:
+  openai:
+    # OpenAI models available via the openai Python SDK.  The default
+    # selection uses the GPT ‑4o model for general purpose reasoning.  When
+    # deploying in production, supply your actual API key via the
+    # OPENAI_API_KEY environment variable.
+    model_name: gpt-4o
+    temperature: 0.7
+    max_tokens: 1024
+    api_key: ${OPENAI_API_KEY}
+  anthropic:
+    # Anthropic’s Claude models provide a strong alternative to OpenAI.
+    # The CLAUDE_API_KEY environment variable can override the API key.
+    model_name: claude-3
+    temperature: 0.7
+    max_tokens: 1024
+    api_key: ${ANTHROPIC_API_KEY}
+  local:
+    # Local models enable offline inference using transformer checkpoints.
+    # Supply the absolute path to your model weights via model_path.
+    model_name: llama-2-7b
+    temperature: 0.7
+    max_tokens: 1024
+    model_path: /path/to/local/model
