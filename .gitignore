@@ -1,0 +1,31 @@
+# Byte‑compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Logs and coverage reports
+*.log
+coverage/
+
+# Secrets and environment files
+.env
+*.env
+
+# Data directories (generated at runtime)
+data/cache/
+data/embeddings/
+data/vectordb/
+
+# Operating system files
+.DS_Store
+Thumbs.db
